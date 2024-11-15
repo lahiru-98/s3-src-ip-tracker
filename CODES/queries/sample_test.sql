@@ -1,0 +1,1 @@
+SELECT count(*) FROM "aws:cloudtrail"."3e069a99-d2dd-4189-b361-ed8c30852262"
