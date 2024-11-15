@@ -1,0 +1,62 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Action": [
+				"athena:StartQueryExecution",
+				"athena:GetQueryExecution",
+				"athena:GetQueryResults"
+			],
+			"Resource": "*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"s3:PutObject",
+				"s3:GetObject",
+				"s3:ListBucket",
+				"S3:GetBucketLocation"
+			],
+			"Resource": [
+				"arn:aws:s3:::athena-query-results-dlg-lahiru",
+				"arn:aws:s3:::athena-query-results-dlg-lahiru/*"
+			]
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"glue:GetDatabase",
+				"glue:GetDatabases",
+				"glue:GetTable",
+				"glue:GetTables",
+				"glue:GetPartitions"
+			],
+			"Resource": [
+				"arn:aws:glue:ap-southeast-1:027516672101:catalog",
+				"arn:aws:glue:ap-southeast-1:027516672101:database/*",
+				"arn:aws:glue:ap-southeast-1:027516672101:table/*/*"
+			]
+		},
+		{
+			"Sid": "BaseLakeFormationPermissions",
+			"Effect": "Allow",
+			"Action": [
+				"lakeformation:GetDataAccess"
+			],
+			"Resource": [
+				"*"
+			]
+		},
+		{
+			"Sid": "SNSPublish",
+			"Effect": "Allow",
+			"Action": [
+				"sns:Publish"
+			],
+			"Resource": [
+				"arn:aws:sns:ap-southeast-1:027516672101:*"
+			]
+		}
+	]
+}
